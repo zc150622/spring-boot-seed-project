@@ -1,0 +1,116 @@
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    password: 504879189
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: 123456
+        reset-enable: false
+      web-stat-filter:
+        enabled: true
+        exclusions:
+          - "*.js"
+          - "*.gif"
+          - "*.jpg"
+          - "*.png"
+          - "*.css"
+          - "*.ico"
+          - "/druid/*"
+      filter:
+        stat:
+          enabled: true
+          db-type: mysql
+          log-slow-sql: true
+          merge-sql: true
+          slow-sql-millis: 5000
+        wall:
+          enabled: true
+  redis:
+    host: localhost
+    timeout: 40000
+    password: 123456
+
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    key-generators:
+  global-config:
+    db-config:
+      id-type: auto
+
+
+#代码生成器配置
+zc:
+  generator:
+      #作者
+        author: zc
+        #数据库配置
+        DriverName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/security?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+        username: root
+        password: 504879189
+        #表名前缀
+        tablePrefix: sys_
+        #需要生成代码的数据库表数组
+        tables:
+          - sys_config
+          - sys_dept
+          - sys_dict_data
+          - sys_dict_type
+          - sys_job
+          - sys_job_log
+          - sys_logininfor
+          - sys_menu
+          - sys_notice
+          - sys_oper_log
+          - sys_post
+          - sys_role
+          - sys_role_dept
+          - sys_role_menu
+          - sys_user
+          - sys_user_post
+          - sys_user_role
+        #父包名
+        parentPackage: com.anxin
+        #model名
+        model-name: auth
+        #包名配置
+        controller: controller
+        service: service
+        mapper: dao
+        entity: pojo
+        #是否使用lombok
+        entity-lombok-model: true
+        #是否使用swagger
+        set-swagger2: true
+        #使用使用restController的形式
+        rest-controller-style: true
+        #生成代码是否覆盖以前的文件
+        file-override: false
+        #mapper.xml配置
+        column-list: true
+        result-map: true
