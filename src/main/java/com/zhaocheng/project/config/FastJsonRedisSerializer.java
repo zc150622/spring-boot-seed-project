@@ -6,6 +6,9 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @author zhao.cheng
+ */
 public class FastJsonRedisSerializer<T> implements RedisSerializer<T> {
 
     private final Class<T> clazz;

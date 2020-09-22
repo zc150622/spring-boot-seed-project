@@ -2,7 +2,6 @@ package com.zhaocheng.project.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
@@ -87,7 +86,7 @@ public class RedisUtils {
             result.add(new String(cursor.next()));
         }
         try {
-            RedisConnectionUtils.releaseConnection(rc, factory);
+            RedisConnectionUtils.releaseConnection(rc, factory,false);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
@@ -125,7 +124,7 @@ public class RedisUtils {
             cursor.next();
         }
         try {
-            RedisConnectionUtils.releaseConnection(rc, factory);
+            RedisConnectionUtils.releaseConnection(rc, factory,false);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

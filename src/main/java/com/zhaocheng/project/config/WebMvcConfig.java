@@ -98,23 +98,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         configurer.setTaskExecutor(new ConcurrentTaskExecutor(Executors.newFixedThreadPool(3)));
         configurer.setDefaultTimeout(30000);
     }
-    /**
-     * 拦截器配置
-     * @param registry /
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry){
-        List<String> excludePath = new ArrayList<>();
-        //排除拦截，除了注册登录(此时还没token)，其他都拦截
-        //登录
-       // excludePath.add("/admin/user/login");
-        //静态资源
 
-        //添加自定义的拦截器
-   /*     registry.addInterceptor(tokenInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePath);
-        WebMvcConfigurer.super.addInterceptors(registry);*/
-    }
+
 
 }
